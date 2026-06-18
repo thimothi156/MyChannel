@@ -1,0 +1,26 @@
+<table  cellspacing="10" cellpadding="5" border="1">
+  <thead>
+    <tr>
+      <th>Name</th>
+      <th>Email</th>
+      <th>Rooms</th>
+      <th>Actions</th>
+    </tr>
+  </thead>
+  <tbody>
+    <% @users.each do |user| %>
+      <tr>
+        <td><%= user.first_name %></td>
+        <td><%= user.email %></td>
+         <td>
+           <% user.rooms.each do |room| %>
+             <a href="<%= room_path(room, user_id: user.id) %>"><%= room.id %></a>
+           <% end %>
+         </td>
+         <td>
+            <%= button_to "NewGroup", new_room_path, method: :get %>
+         </td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>

@@ -1,0 +1,363 @@
+html, body {
+  height: 100%;        /* ← ADD */
+  overflow: hidden;    /* ← ADD — stops body from ever scrolling */
+  margin: 0;           /* already in your body{} */
+}
+
+
+.container {
+  display: grid;
+  height: 100vh;
+
+  grid-template-columns: 5% 1fr;
+  grid-template-rows: auto 1fr;
+  overflow: hidden; 
+  grid-template-areas:
+    "header header"
+    "sidebar main";
+}
+
+header {
+  grid-area: header;
+  background: #820586;
+  display: flex;
+  justify-content: center;
+  gap: 20px;
+  min-height: max-content;
+}
+
+main {
+  grid-area: main;
+  display: grid;
+  grid-template-columns: 25% 1fr;
+  grid-template-rows: 1fr;
+   min-height: 0;       /* ← ADD — same reason as flex, grid children need this */
+  overflow: hidden;    /* ← ADD */
+  grid-template-areas: 
+  "chat_list chat_messages"
+  "chat_list chat_messages";
+}
+
+
+nav {
+  grid-area: sidebar;
+  background: #820586;
+  font-size: 24px;
+  display: flex;
+  flex-direction: column;
+  padding:10px;
+  color: white;
+  min-width: max-content;
+
+}
+section{
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 22px;
+}
+
+section p{
+  margin: 0px;
+  font-size: 13px;
+}
+
+nav :last-child{
+  margin-top: auto;
+}
+#input_container{
+   position: relative;
+   margin: 3px;
+}
+
+
+#input_container i {
+  position: absolute;
+  top: 50%;
+  left: 10px;
+  color: rgb(191, 194, 197);
+  transform: translateY(-50%);
+}
+
+#input_container input {
+  border-radius: 5px;
+  width: 100%;
+  padding: 5px;
+  padding-left: 34px;
+  border: none;
+}
+
+main{
+  display: grid;
+  grid-template-columns: 25% 1fr;
+  grid-template-rows: 1fr;
+  grid-template-areas: 
+  "chat_list chat_messages"
+  "chat_list chat_messages";
+}
+
+main > div{
+  grid-area: chat_messages;
+  background-color: rgb(242, 237, 237);
+   min-height: 0;      /* ← ADD */
+  overflow: hidden;   /* ← ADD */
+  display: flex;      /* ← ADD */
+  flex-direction: column; /* ← ADD */
+}
+
+aside {
+  position: relative;
+  background-color: #3a0f3b;
+  color: white;
+  padding :20px 0px 20px 20px;
+  display: flex;
+  flex-direction: column;
+  min-height: 0;   
+}
+
+#workspace_index {
+  position: absolute;
+  top: 40px;
+  left: 0px;
+  width: 12rem;
+  height: 400px;
+  background-color: black;
+  z-index: 100;
+}
+.chat_items{
+  display: flex;
+  gap: 10px;
+  padding: 10px;
+  flex:1;
+}
+
+.chat_items:hover{
+  background-color: #5a2a5b;
+  border-radius: 3px;
+  :last-child{
+    margin-left: auto;
+    display: flex;
+    gap:8px;
+    font-size: 11px;
+  }
+}
+.chat_items :last-child{
+  display: none;
+}
+
+#chat_items_container{
+  display: flex;
+  flex-direction: column;
+  flex: 1;
+  overflow-y: auto;
+}
+aside>:last-child{
+  margin-top: auto;
+}
+.sub_items{
+  margin: 4px 0px 4px 23px;
+  font-size: 14px;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+.chat_sub{
+  display: flex;
+  gap: 8px;
+  align-items: center;
+}
+.chat_sub:hover{
+  background-color: #5a2a5b;
+}
+
+#regular_section i:hover{
+  background-color: #5a2a5b;
+}
+
+#top{
+  max-height: 20%;
+}
+
+#below{
+  max-height: 20%;
+}
+
+
+#message_container{
+   display: flex;
+   flex-direction: column;
+   height: 100%;          /* must have a defined height — the "plate" */
+   overflow: hidden; 
+    min-height: 0;   /* ← ADD */
+}
+
+#message_input > form{
+  border: 1px solid gray;
+  border-radius: 10px;
+  display: flex;
+  flex-shrink: 0;
+  flex-direction: column;
+  margin:0px 16px 16px 10px;
+  input {
+    padding: 20px;
+    margin: 10px;
+  }
+  input:focus {
+  outline: none;
+  border: none;
+}
+}
+
+#send_button{
+  display: flex;
+  padding: 8px;
+  margin-top: 5px;
+  button{
+    background-color: #40a829;
+    border: none;
+  }
+}
+#send_button>div{
+  display: flex;
+  margin-left:auto;
+  padding: 8px;
+  gap: 7px;
+  background-color: #40a829;
+}
+
+#schdule_send{
+  font-size: 14px;
+}
+#channel_header{
+  box-sizing: border-box;
+  flex-shrink: 0;
+  height: 10%;
+  border: 1px solid rgb(205, 202, 202);
+  display: flex;
+  padding: 20px;
+}
+#member_count{
+  margin-left: auto;
+  button{
+    width:70px;
+    height:20px;
+    border-radius: 5px;
+    background-color: azure;
+    
+  }
+}
+
+#message_box{
+  flex: 1;               /* FILLING — take all remaining space */
+  overflow-y: auto;      /* scroll when content overflows */
+  min-height: 0;   
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end;
+}
+
+.custom-overlay {
+  position: fixed;
+  inset: 0;
+  background: rgba(0, 0, 0, 0.4); /* light black */
+  
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.custom-modal {
+  width: 31.25rem;
+  height: 17.25rem;
+  background: white;
+  padding: 30px;
+  border-radius: 12px;
+  display: flex;
+  flex-direction: column;
+}
+.modal_header{
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-top: auto;
+
+
+}
+.modal_main input{
+  padding: 18px;
+  width: 74%;
+  border-radius: 13px;
+  box-shadow: 0 0 23px rgba(13, 110, 253, 0.5);
+}
+.modal_element button{
+  background-color: rgb(199, 197, 197);
+  /* #8126F7; */
+  padding: 5px;
+}
+#last_step_button_container{
+  display: flex;
+  gap: 5px;
+}
+#message_box{
+ display: flex;
+ flex-direction: column;
+ padding: 30px;
+.message_left {
+  margin-right: auto;
+  background-color: rgb(222, 200, 159);
+  max-width: 50%;
+  border-radius: 10px;
+  padding: 8px;
+ }
+ .message_right{
+ margin-left: auto;
+ background-color:  #DCF8C6;
+ max-width: 50%;
+  border-radius: 10px;
+  padding: 8px;
+}
+}
+
+#invite_container{
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+  justify-content: center;
+}
+#invite{
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+#invite > button{
+  margin-left: auto;
+  padding: 12px;
+  background-color: #40a829;
+  border-radius: 5px;
+   color: white;
+  border: none;
+}
+
+#invite > input{
+ padding: 18px;
+ width: 83%;
+ border-radius: 16px;
+ box-shadow: 0 0 23px rgba(13, 110, 253, 0.5);
+}
+.fa-solid.fa-user {
+  background-color: rgb(234, 225, 210);
+  color:orange;
+  padding: 4px;
+  border-radius: 4px;
+  
+}
+.message_line{
+  display: flex;
+  gap: 8px;
+  margin-bottom: 12px;
+}
+.divider {
+  width: 1px;
+  height: 20px;
+  background-color: #ccc;
+}

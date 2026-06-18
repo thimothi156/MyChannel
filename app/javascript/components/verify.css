@@ -1,0 +1,47 @@
+#code_verification{
+    display: flex;
+}
+
+#verification_container{
+  padding: 20px;
+}
+#elements_box{
+    display: flex;
+    gap:20px;
+    width: fit-content;
+    margin:auto;
+}
+.item{
+    height: 50px;
+    width: 50px;
+    text-align: center;
+    font-size: 25px;
+}
+.border_red{
+    border: 1px solid red;
+}
+#timer{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap:10px;
+    margin-top:20px;
+}
+#verify{
+    padding: 15px;
+    width: 100px;
+    border-radius: 10px;
+    font-weight: bold;
+    font-size: 14px;
+    background-color: blue;
+    color: white;
+    border: none;
+    margin-left: auto;
+}
+
+#verify_container{
+ display: flex;
+}
+#timer a{
+  text-decoration: none;
+}

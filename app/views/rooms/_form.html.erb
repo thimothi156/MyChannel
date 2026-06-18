@@ -1,0 +1,21 @@
+<%= form_with model: room, method: :post do |f| %>
+
+  <div>
+    <%= f.label :name, "Room Name" %>
+    <%= f.text_field :name %>
+  </div>
+
+  <div>
+    <%= f.label :user_ids, "Users" %>
+
+    <%= f.select :user_ids,
+                 User.all.collect { |u| [u.first_name, u.id] },
+                 {},
+                 multiple: true %>
+  </div>
+
+  <div>
+    <%= f.submit "Save" %>
+  </div>
+
+<% end %>
